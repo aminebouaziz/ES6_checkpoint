@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+	<style>
+		#score {
+			font-size: 200px;
+		}
+	</style>
+
+</head>
+
+<body onkeypress="play()">
+
+	<center>
+		<audio id="song" src="song.mp3"></audio>
+		<h1 id="score"> 0 </h1>
+
+		<button id="9adim" onclick="avance()">9adim</button>
+		<button onclick="reset()"> Reset </button>
+		<button id="wakhir" onclick="wakhir()">9adim bitweli</button>
+	</center>
+
+</body>
+
+<script>
+	var x = 0;
+	var song = document.getElementById("song");
+
+	var score = document.getElementById("score");
+
+	var colors = ["green", "skyblue", "red", "black", "white", "beige"];
+	var avance=function () {
+	song.currentTime += 10;
+		 let x = x + 1;
+		score.innerHTML = x;
+
+
+	};
+
+	var wakhir = function () {
+	song.currentTime -= 10;
+
+		x = x - 1;
+		score.innerHTML = x;
+
+	};
+	var reset = function() {
+		x = 0
+		score.innerHTML = "0";
+		song.currentTime = 0;
+	};
+	var play= function() {
+
+		document.body.style.backgroundColor = colors[(score.innerHTML % colors.length)];
+
+
+
+		song.play();
+	};
+	var pause= function() 
+	{
+		 song.pause(); 
+    };
+	setInterval(pause, 1000);
+
+</script>
+
+
+
+</html>
